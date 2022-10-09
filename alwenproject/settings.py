@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -144,13 +145,9 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
-# Internationalization
-# https://docs.djangoproject.com/en/3.2/topics/i18n/
-
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Africa/Mogadishu'
 
 USE_I18N = True
 
@@ -168,3 +165,16 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+STATICFILES_LOCATION='static'
+
+STATIC_URL = '/static/'
+#STATIC_ROOT='static'
+
+STATICFILES_DIRS=[
+    os.path.join(BASE_DIR,'static')
+]
+
+
+#PATH WHERE UPLOADED FILES WILL BE STORED...in the media folder
+MEDIA_ROOT=os.path.join(BASE_DIR,'static/media')
+MEDIA_URL='/media/'#fetch images/media using this path when viewing through the browser...this folder will be create

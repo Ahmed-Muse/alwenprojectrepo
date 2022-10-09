@@ -176,6 +176,10 @@ def topUpCustomerAccount(request,pk):
 
     }
     return render(request, 'logistics/customers/customers-top-ups.html', context)#th
+@login_required(login_url='login:loginpage')
+def delete_customer_payment(request,pk):
+    CustomerPaymentsModel.objects.get(id=pk).delete()
+    return redirect('logistics:topUpCustomerAccount',pk=mycustid)
 
 
 #######################################3 Carriers section #####################################3
@@ -482,7 +486,7 @@ def fill_ups(request):
     if request.method == 'POST':
         form=AddFillUpsForm(request.POST, request.FILES)
         if form.is_valid():
-            form.save()
+            
             mycard=request.POST.get('card')
             my_car=request.POST.get('vehicle')
             liters=request.POST.get('quantity')
@@ -497,6 +501,7 @@ def fill_ups(request):
                 carno=ourcard.number
                 running_fuel_consumption=our_car.fuel_usage
                 
+                
             else:
                 return redirect('logistics:fill_ups')
             
@@ -505,10 +510,11 @@ def fill_ups(request):
                 ourcard.save()
                 our_car.fuel_usage=int(running_fuel_consumption)+ int(myfuelcost)
                 our_car.save()
+                form.save()
                 
                 return redirect('logistics:fill_ups')
             else:
-                return HttpResponse("lacag maheysatid sxbow naga qaley!")
+                return HttpResponse("The selected Card has no enough money!")
     else:
         form=AddFillUpsForm()
     context={
@@ -1457,9 +1463,11 @@ def deleteCard(request,pk):
 @login_required(login_url='login:loginpage')
 def topUpCard(request,pk):
     title="Top Up Card"
+    global card,mycardid
     try:
         card=CardsModel.objects.get(id=pk)#very important to get id to go to particular shipment
         initial_balance=card.balance#this gives the initial account
+        mycardid=card.id
     except:
         return HttpResponse("Sorry there is a problem ! ")
     
@@ -1504,4 +1512,4 @@ def topUpCard(request,pk):
 @login_required(login_url='login:loginpage')
 def delete_top_up(request,pk):
     CardsTopUpsModel.objects.get(id=pk).delete()
-    return redirect('logistics:cards')
+    return redirect('logistics:topUpCard',pk=mycardid)

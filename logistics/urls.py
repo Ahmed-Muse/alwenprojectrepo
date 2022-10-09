@@ -50,6 +50,7 @@ urlpatterns = [
     path('update-customer-details/<str:pk>/', views.update_customer, name="update-log-customer-details"),
     path('delete-customer/<str:pk>/', views.delete_customer, name="delete-log-customer"),
     path('top-up-customer-account/<str:pk>/', views.topUpCustomerAccount, name="topUpCustomerAccount"),
+    path('Delete-Customer-Payment/<str:pk>/', views.delete_customer_payment, name="delete_customer_payment"),
 
 
     #########################3 carrier section#############################3

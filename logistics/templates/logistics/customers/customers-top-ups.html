@@ -209,12 +209,7 @@ a:link{
                     <a  href="{% url 'logistics:logistics-dashboard' %}">
                     <button id="allif-link-buttons" type="button" class="btn btn-success mybuttonlinks" >
                     Dashboard</button></a>
-                    <a  href="" >
-                    <button id="allif-link-buttons" type="button" class="btn btn-success mybuttonlinks" >
-                    Edit</button></a>
-                    <a  href="">
-                      <button id="allif-link-buttons" type="button" class="btn btn-success mybuttonlinks" >
-                        <img src="{% static 'images/delete.png'%}" width="25"></button></a>
+                   
                     </div>
 
                    
@@ -287,7 +282,7 @@ a:link{
  
   
   <td>
-      <a href="{% url 'logistics:delete_top_up' topup.id %}">
+      <a href="{% url 'logistics:delete_customer_payment' topup.id %}">
         <img src="{% static 'images/delete.png'%}" width="20">
       </a>
   </td>
