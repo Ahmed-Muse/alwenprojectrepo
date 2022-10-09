@@ -1,0 +1,58 @@
+
+                
+        <table class="table table-hover">
+            <thead>
+              <tr>
+               
+                <th scope="col">Task No.</th>
+                <th scope="col">Title</th>
+                <th scope="col">Description</th>
+                <th scope="col">Status</th>
+                <th scope="col">Due</th>
+                <th scope="col">Complete</th>
+                <th scope="col">Update</th>
+                <th scope="col">Delete</th>
+                <th scope="col">Remaining Time</th>
+              </tr>
+            </thead>
+            <tbody>
+
+                
+                {% for task in tasks %}
+                {% if task.taskDay == 'Monday' %}
+              <tr>
+                
+                <td>{{forloop.counter}}</td>
+                <td>{{task.title}}</td>
+                <td>{{task.task}}</td>
+                <td>{{task.status}}</td>
+                <td>{{task.dueDate}}</td>
+                <td>{{task.complete}}</td>
+                <td>{{task.taskDay}}</td>
+
+                 
+<td> <a href="{% url 'todoapp:update_tasks' task.id %}" data-toggle="tooltip" title="Delete this record">
+<button class="btn btn-success">Update</button></a></td>
+                
+              
+<td> <a href="{% url 'todoapp:delete_task' task.id %}" data-toggle="tooltip" title="Delete this record">
+<button class="btn btn-danger">Delete</button></a></td>
+
+<td>  <button class="btn btn-success"> {{ task.dueDate|timeuntil }}</button></td>
+
+
+</tr>
+{% elif task.taskDay == 'Wednesday' %}
+<button>wed</button>
+{{task.task}}  <a href="{% url 'todoapp:delete_task' task.id %}" data-toggle="tooltip" title="Delete this record">
+<button class="btn btn-danger">Delete</button></a>
+{% else%}
+{{task.taskDay}}  <a href="{% url 'todoapp:delete_task' task.id %}" data-toggle="tooltip" title="Delete this record">
+<button class="btn btn-danger">Delete</button></a>
+{% endif %}
+              
+            {% endfor %}
+            </tbody>
+          </table>
+          
+
