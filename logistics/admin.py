@@ -21,6 +21,8 @@ admin.site.register(AlwenDriversModel)
 #admin.site.register(CardsModel)
 admin.site.register(AlwenFillUpsModel)
 admin.site.register(AlwenServiceDetailsModel)
+admin.site.register(AlwenNetworkDetailsModel)
+admin.site.register(AlwenNetworkScopeModel)
 
 @admin.register(CardsModel)
 class CardsModeladmin(admin.ModelAdmin):

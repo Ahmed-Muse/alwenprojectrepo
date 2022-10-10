@@ -872,15 +872,15 @@ def alwen_invoice_pdf(request,pk):
             invoiceTotal += y
 
     template_path = 'logistics/invoice-pdf.html'
-    #companyDetails=AllifmaalDetailsModel.objects.all()
-    #scope=AllifmaalScopeModel.objects.all()
+    companyDetails=AlwenNetworkDetailsModel.objects.all()
+    scopes=AlwenNetworkScopeModel.objects.all()
     #alwenco=SepcoLogoModel.objects.all()
     context = {
     'invoice_details':invoice_details,
    "invoiceItems":invoiceItems,
-   #"companyDetails":companyDetails,
+   "companyDetails":companyDetails,
    "invoiceTotal":invoiceTotal,
-   #"scope":scope,
+   "scopes":scopes,
    "system_user":system_user,
    #"alwenco":alwenco,
    "title":title,
@@ -1214,6 +1214,11 @@ def alwen_job_invoice_pdf(request,pk):
     #companyDetails=AllifmaalDetailsModel.objects.all()
     #scope=AllifmaalScopeModel.objects.all()
     #alwenco=SepcoLogoModel.objects.all()
+
+    companyDetails=AlwenNetworkDetailsModel.objects.all()
+    scopes=AlwenNetworkScopeModel.objects.all()
+    #alwenco=SepcoLogoModel.objects.all()
+   
         
     context={
         "my_job_id":my_job_id,
@@ -1232,6 +1237,9 @@ def alwen_job_invoice_pdf(request,pk):
         "system_user":system_user,
         #"alwenco":alwenco,
         "title":title,
+        "companyDetails":companyDetails,
+   
+   "scopes":scopes,
         
     }
     

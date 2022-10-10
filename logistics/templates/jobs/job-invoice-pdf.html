@@ -147,7 +147,7 @@ tr.row1{
     <thead>
       <tr>
         <th>
-          {% for info in alwenco %}
+          {% for info in companyDetails %}
           <div style="width: 180px; max-height: 120px;">
           <img src="{{info.logo.path}}">
           
@@ -156,20 +156,19 @@ tr.row1{
          
         </th>
         <th>
-         <li> Address: Westlands</li>
-          <li>Phone: 0723973992 </li>
-         <li>E-mail: arnold.kip@alwen.com</li>
-         <li>Website: www.alwen.com </li>
+         <li> Address: {{info.address}}</li>
+          <li>Phone: {{info.phone1}} </li>
+         <li>E-mail: {{info.email}}</li>
+         <li>Website: {{info.website}}</li>
         </th>
         {% endfor%}
         
         <div class="expert">
         <th>
+          {% for scope in scopes %}
           
-          <li>Logistics</li>
-          <li>Travel</li>
-          <li>Relocations</li>
-          <li>Consultancy</li>
+          <li>{{scope.name}}</li>
+          {% endfor %}
           
          
         </th>
@@ -314,12 +313,6 @@ tr.row1{
 
 <br>
 
-<div class="body-section">
-    
-      <a href="https://www.alwen.com/" class="float-right">www.alwen.com</a>
-    
-   
-</div>      
 </div> 
 
 </body>

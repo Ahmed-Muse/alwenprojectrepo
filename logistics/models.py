@@ -7,6 +7,24 @@ from django.http.response import HttpResponse
 
 #from matplotlib.pyplot import cla
 #Choice field
+class AlwenNetworkDetailsModel(models.Model):
+    name=models.CharField(max_length=20,blank=True,null=True)
+    address=models.CharField(max_length=30,blank=True,null=True)
+    pobox=models.CharField(max_length=20,blank=True,null=True)
+    email=models.EmailField(max_length=40,blank=True,null=True)
+    website=models.CharField(max_length=30,blank=True,null=True)
+    phone1=models.CharField(max_length=20,blank=True,null=True)
+    phone2=models.CharField(max_length=20,blank=True,null=True)
+    #logo=models.ImageField()
+    logo=models.FileField(upload_to='myfiles/',null=True, blank=True)
+
+    def __str__(self):
+        return self.name
+class AlwenNetworkScopeModel(models.Model):
+    name=models.CharField(max_length=20,blank=True,null=True)
+    def __str__(self):
+        return self.name
+
 class CustomersModel(models.Model):
 
     Country = [
