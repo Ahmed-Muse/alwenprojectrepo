@@ -14,19 +14,19 @@ from django.contrib.auth import authenticate, login, logout#for login and logout
 # Create your views here.
 def registerpage(request):
     title="User registeration"
-    if request.user.is_authenticated:
-        return redirect("logistics:logistics-dashboard")
-    else:
-        register_form=CreateUserForm()
-        if request.method=='POST':
-            register_form=CreateUserForm(request.POST)
-            if register_form.is_valid():
-                user=register_form.save()
-            
-                username=register_form.cleaned_data.get('username')
-                messages.success(request,'Account was created for '+ username)
-            
-                return redirect('login:loginpage')
+    #if request.user.is_authenticated:
+        # return redirect("logistics:logistics-dashboard")
+        #else:
+    register_form=CreateUserForm()
+    if request.method=='POST':
+        register_form=CreateUserForm(request.POST)
+        if register_form.is_valid():
+            user=register_form.save()
+        
+            username=register_form.cleaned_data.get('username')
+            messages.success(request,'Account was created for '+ username)
+        
+            return redirect('login:loginpage')
     
     context={
         "title":title,
